@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=4 uid="uid://damkuqx1xbloy"]
+[gd_scene load_steps=9 format=4 uid="uid://damkuqx1xbloy"]
 
-[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://c8xjkmr5dfelw" path="res://scenes/Player.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bls6pqt8flug3" path="res://scenes/tile_map.tscn" id="2_ixamt"]
 [ext_resource type="Texture2D" uid="uid://tpq0ge2lruix" path="res://assets/Familiar Looking Rocket.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://bul5fybv2rytg" path="res://scenes/Area Trigger.tscn" id="4_enfm1"]
+[ext_resource type="Script" path="res://scenes/area_trigger.gd" id="5_6wdqp"]
+[ext_resource type="PackedScene" uid="uid://77xpf1gyir0l" path="res://scenes/Life counter.tscn" id="5_8w6jw"]
+[ext_resource type="PackedScene" uid="uid://cruo5t2jrgyae" path="res://scenes/pausebutton.tscn" id="7_guxju"]
+[ext_resource type="PackedScene" uid="uid://dhs87cw4qej1a" path="res://scenes/pausedpanel.tscn" id="8_odjf6"]
 
 [node name="Level 1" type="Node2D"]
 
@@ -21,7 +25,32 @@ texture = ExtResource("3")
 [node name="death_trigger" parent="." instance=ExtResource("4_enfm1")]
 position = Vector2(-29, 1112)
 scale = Vector2(10.1706, 0.6163)
+script = ExtResource("5_6wdqp")
+scene_to_load = "Level 1"
 
 [node name="win_trigger" parent="." instance=ExtResource("4_enfm1")]
 position = Vector2(1743, 394)
-sceneName = "Level 2"
+scene_to_load = "Level 2"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LifeCounter" parent="CanvasLayer" instance=ExtResource("5_8w6jw")]
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.038
+anchor_right = 0.044
+anchor_bottom = 0.038
+offset_left = -48.688
+offset_top = -24.624
+offset_right = 49.312
+offset_bottom = 24.376
+metadata/_edit_use_anchors_ = true
+
+[node name="Pausebutton" parent="CanvasLayer" instance=ExtResource("7_guxju")]
+offset_left = 1076.0
+offset_top = -0.999996
+offset_right = 1453.0
+offset_bottom = 368.0
+
+[node name="Pausedpanel" parent="CanvasLayer" instance=ExtResource("8_odjf6")]
+visible = false

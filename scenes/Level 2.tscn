@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=4 uid="uid://djhjj82du0q1c"]
+[gd_scene load_steps=8 format=4 uid="uid://djhjj82du0q1c"]
 
-[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://c8xjkmr5dfelw" path="res://scenes/Player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://tpq0ge2lruix" path="res://assets/Familiar Looking Rocket.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://bls6pqt8flug3" path="res://scenes/tile_map.tscn" id="3_ucxpt"]
 [ext_resource type="PackedScene" uid="uid://bul5fybv2rytg" path="res://scenes/Area Trigger.tscn" id="4_l54f5"]
+[ext_resource type="PackedScene" uid="uid://77xpf1gyir0l" path="res://scenes/Life counter.tscn" id="5_gq82k"]
+[ext_resource type="Script" path="res://scenes/area_trigger.gd" id="5_vdgd2"]
+[ext_resource type="PackedScene" uid="uid://cruo5t2jrgyae" path="res://scenes/pausebutton.tscn" id="7_1yk60"]
 
 [node name="Level 2" type="Node2D"]
 
@@ -19,9 +22,24 @@ tile_map_data = PackedByteArray("AAADAB0AAAAAAAAAAAAEAB0AAAAAAAAAAAAFAB0AAAAAAAA
 
 [node name="win_trigger" parent="." instance=ExtResource("4_l54f5")]
 position = Vector2(1586, 721)
-sceneName = "Win Screen"
+scene_to_load = "Win Screen"
 
 [node name="death_trigger" parent="." instance=ExtResource("4_l54f5")]
 position = Vector2(420, 2439)
 scale = Vector2(10.56, 1)
-sceneName = "Level 2"
+script = ExtResource("5_vdgd2")
+scene_to_load = "Level 2"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LifeCounter" parent="CanvasLayer" instance=ExtResource("5_gq82k")]
+offset_left = 7.0
+offset_top = 1.0
+offset_right = 105.0
+offset_bottom = 50.0
+
+[node name="Pausebutton" parent="CanvasLayer" instance=ExtResource("7_1yk60")]
+offset_left = 1075.0
+offset_top = 1.0
+offset_right = 1452.0
+offset_bottom = 370.0

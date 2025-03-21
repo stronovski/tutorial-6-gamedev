@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cruo5t2jrgyae"]
+
+[ext_resource type="Texture2D" uid="uid://bxdbofu7w4xb0" path="res://assets/Screenshot 2025-03-21 033258.png" id="1_w15l8"]
+[ext_resource type="Script" path="res://scenes/pausebutton.gd" id="2_ccc3l"]
+
+[node name="Pausebutton" type="Button"]
+offset_right = 377.0
+offset_bottom = 369.0
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("1_w15l8")
+script = ExtResource("2_ccc3l")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

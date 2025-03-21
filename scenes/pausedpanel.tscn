@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhs87cw4qej1a"]
+
+[ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/Fonts/Raw/CC Wild Words Roman.ttf" id="1_6o34w"]
+[ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/Fonts/Raw/continuum bold.ttf" id="2_isaeo"]
+[ext_resource type="Script" path="res://scenes/pause_button.gd" id="3_mcdf1"]
+[ext_resource type="Script" path="res://scenes/link_button.gd" id="4_br0r2"]
+
+[node name="Pausedpanel" type="Panel"]
+process_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 123.0
+offset_right = 919.0
+offset_bottom = 515.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 646.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_6o34w")
+theme_override_font_sizes/font_size = 100
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0.729412, 0, 1)
+theme_override_colors/font_hover_color = Color(0.192472, 0.603573, 0.576459, 1)
+theme_override_fonts/font = ExtResource("2_isaeo")
+theme_override_font_sizes/font_size = 24
+text = "Resume"
+script = ExtResource("3_mcdf1")
+
+[node name="LinkButton2" type="LinkButton" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0.729412, 0, 1)
+theme_override_colors/font_hover_color = Color(0.192472, 0.603573, 0.576459, 1)
+theme_override_fonts/font = ExtResource("2_isaeo")
+theme_override_font_sizes/font_size = 24
+text = "Main Menu"
+script = ExtResource("4_br0r2")
+scene_to_load = "mainmenu"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/LinkButton" to="VBoxContainer/VBoxContainer/LinkButton" method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/LinkButton2" to="VBoxContainer/VBoxContainer/LinkButton2" method="_on_New_Game_pressed"]
